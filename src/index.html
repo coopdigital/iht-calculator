@@ -69,20 +69,10 @@
             <form id="ihtCalcFormPage1" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 1" id="questions-page1">
 
-                    <h1>Inheritance Tax Calculator</h1>
-                    <p>
-                        This calculator provides an estimated Inheritance Tax liability for couples who:
-                    </p>
-                    <ul>
-                        <li>are married or in a civil partnership</li>
-                        <li>are both considered domiciled for inheritance tax purposes in the United Kingdom</li>
-                        <li>are leaving their respective estates to each other on the first death</li>
-                        <li>plan for their estate to pass to family and/or friends after they have both died</li>
-                        <li>have an estate of less than £2 million</li>
-                        <li>do not plan to leave their estate to a new spouse or charity</li>
-                    </ul>
+                    <h1>You and your partner's assets</h1>
+                   
                     <br />
-                    <h3>Assets</h3>
+                   
 
                     <div class="coop-form__row">
                         <fieldset class="coop-c-form-choice">
@@ -95,7 +85,7 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you own any other property in England or Wales?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you own any other property in England or Wales?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="assetsHomeOtherExists" id="assetsHomeOtherExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsHomeOtherExists" required>
@@ -118,7 +108,9 @@
 
                     <div class="coop-form__row">
                         <fieldset class="coop-c-form-choice">
-                            <legend class="coop-c-form-choice__legend"><label for="assetsInvestmentValue">What is the value of any cash and Investments?</label></legend>
+                            <legend class="coop-c-form-choice__legend"><label for="assetsInvestmentValue">What is the value of you and your partner’s cash and investments?</label>
+<span class="coop-label__hint">Eg stocks and shares</span>
+</legend>
                             <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsInvestmentValue"
                                    id="assetsInvestmentValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsInvestmentValue" min="0.01" step="0.01">
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsInvestmentValue" />
@@ -127,7 +119,7 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any life insurance policies (not held in trust)?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have life insurance policies (not held in trust)?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="assetsLifeInsuranceExists" id="assetsLifeInsuranceExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsLifeInsuranceExists" required>
@@ -150,7 +142,7 @@
 
                     <div class="coop-form__row">
                         <fieldset class="coop-c-form-choice">
-                            <legend class="coop-c-form-choice__legend"><label for="assetsPossessionValue">What is the value of any personal possessions?</label></legend>
+                            <legend class="coop-c-form-choice__legend"><label for="assetsPossessionValue">What is the current value of both of your personal possesions?</label><span class="coop-label__hint">Eg vehicles or jewellery</span></legend>
                             <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsPossessionValue"
                                    id="assetsPossessionValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsPossessionValue" min="0.01" step="0.01">
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsPossessionValue" />
@@ -159,14 +151,14 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any foreign assets?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have any foreign assets?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="assetsForeignExists" id="assetsForeignExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsForeignExists" required>
                                 <label class="coop-c-form-choice__label" for="assetsForeignExists-1">Yes</label>
                             </div>
                             <div v-if="assetsForeignExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsForeignValue">What is the value of any foreign asset?</label></legend>
+                                <legend class="coop-form__label"><label for="assetsForeignValue">Huch much are your foreign assets worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsForeignValue"
                                        id="assetsForeignValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsForeignValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetsForeignValue" />
@@ -182,14 +174,14 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you expect to receive any future inheritance?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you expect to receive any future inheritance?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="assetFurtherInheritanceExists" id="assetFurtherInheritanceExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetFurtherInheritanceExists" required>
                                 <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-1">Yes</label>
                             </div>
                             <div v-if="assetFurtherInheritanceExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">What is the estimated value of the inheritance?</label></legend>
+                                <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">Huch much do you think this inheritance is worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetFurtherInheritanceValue"
                                        id="assetFurtherInheritanceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetFurtherInheritanceValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetFurtherInheritanceValue" />
@@ -206,14 +198,14 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any other assets?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have any other assets?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="assetsOtherExists" id="assetsOtherExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsOtherExists" required>
                                 <label class="coop-c-form-choice__label" for="assetsOtherExists-1">Yes</label>
                             </div>
                             <div v-if="assetsOtherExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsOtherValue">What is the value of these assets?</label></legend>
+                                <legend class="coop-form__label"><label for="assetsOtherValue">Huch much are these assets worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsOtherValue"
                                        id="assetsOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsOtherValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetsOtherValue" />
@@ -227,7 +219,7 @@
                         </fieldset>
                     </div>
 
-                    <button id="buttonPage1" class="coop-btn coop-btn--primary" type="button" v-on:click="pageOneSubmit()">Next Step</button>
+                    <button id="buttonPage1" class="coop-btn coop-btn--primary" type="button" v-on:click="pageOneSubmit()">Next</button>
                     <br />
                     <br />
                 </template>
@@ -236,18 +228,18 @@
             <form id="ihtCalcFormPage2" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 2" id="questions-page2">
 
-                    <h3>Liabilities</h3>
+                    <h1>You and your partner’s debts</h1>
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any outstanding mortgages on your main home?</legend>
+                            <legend class="coop-c-form-choice__legend">Do you have a mortgage on your main home?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="liabMortgageExists" id="liabMortgageExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageExists" required>
                                 <label class="coop-c-form-choice__label" for="liabMortgageExists-1">Yes</label>
                             </div>
                             <div v-if="liabMortgageExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabMortageValue">How much mortgage debt is outstanding?</label></legend>
+                                <legend class="coop-form__label"><label for="liabMortageValue">How much do you owe on your mortgage for your main home?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabMortageValue"
                                        id="liabMortageValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabMortageValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageTwoSubmitted" :field="errors.liabMortageValue" />
@@ -263,14 +255,14 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any outstanding bank overdrafts?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have any outstanding bank overdrafts?</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="liabOverdraftExists" id="liabOverdraftExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOverdraftExists" required>
                                 <label class="coop-c-form-choice__label" for="liabOverdraftExists-1">Yes</label>
                             </div>
                             <div v-if="liabOverdraftExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabOverdraftValue">How much do you owe on your overdraft?</label></legend>
+                                <legend class="coop-form__label"><label for="liabOverdraftValue">How much do you both owe on your overdrafts?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOverdraftValue"
                                        id="liabOverdraftValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabOverdraftValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOverdraftValue" />
@@ -287,7 +279,7 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any credit card debt?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have any credit card debt?</legend>
                             <div id="liabCreditCardExists" class="coop-c-form-choice">
                                 <input type="radio" name="liabCreditCardExists" id="liabCreditCardExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabCreditCardExists" required>
@@ -311,14 +303,14 @@
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have any outstanding loans?</legend>
+                            <legend class="coop-c-form-choice__legend">Do either of you have any outstanding loans?</legend>
                             <div id="liabLoanExists" class="coop-c-form-choice">
                                 <input type="radio" name="liabLoanExists" id="liabLoanExists-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabLoanExists" required>
                                 <label class="coop-c-form-choice__label" for="liabLoanExists-1">Yes</label>
                             </div>
                             <div v-if="liabLoanExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabLoanValue">How much is owed on your outstanding loans?</label></legend>
+                                <legend class="coop-form__label"><label for="liabLoanValue">How much do you owe for your loans?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabLoanValue"
                                        id="liabLoanValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabLoanValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageTwoSubmitted" :field="errors.liabLoanValue" />
@@ -344,7 +336,7 @@
                                 <label class="coop-c-form-choice__label" for="liabOtherDebtExists-1">Yes</label>
                             </div>
                             <div v-if="liabOtherDebtExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabOtherDebtValue">What is the value of any other debts?</label></legend>
+                                <legend class="coop-form__label"><label for="liabOtherDebtValue">How much do you owe for these debts?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOtherDebtValue"
                                        id="liabOtherDebtValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabOtherDebtValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOtherDebtValue" />
@@ -358,7 +350,7 @@
                         </fieldset>
                     </div>
 
-                    <button id="buttonPage2" class="coop-btn coop-btn--primary" type="button" v-on:click="pageTwoSubmit()">Next Step</button>
+                    <button id="buttonPage2" class="coop-btn coop-btn--primary" type="button" v-on:click="pageTwoSubmit()">Next</button>
                     <br />
                     <br />
                     <button id="back-Page2" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
@@ -368,13 +360,12 @@
             <form id="ihtCalcFormPage3" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 3" id="questions-page3">
 
-                    <h3>Gifts</h3>
+                    <h1>Giving things to people</h1>
 
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">
-                                Have you made any gifts worth more than £3,000 in any one tax year?
-                                <span class="coop-label__hint">Exclude gifts to each other or charity</span>
+Have you given away any money or things worth over £3,000 in the last 7 years?                                <span class="coop-label__hint">Eg giving money to a child for a house deposit. Don’t include gifts to each other </span>
                             </legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="giftExists" id="giftExists-1" value="1"
@@ -545,7 +536,7 @@
                         </section>
                     </div>
 
-                    <button id="buttonPage3" class="coop-btn coop-btn--primary" type="button" v-on:click="pageThreeSubmit()">Next Step</button>
+                    <button id="buttonPage3" class="coop-btn coop-btn--primary" type="button" v-on:click="pageThreeSubmit()">Next</button>
                     <br />
                     <br />
                     <button id="back-Page3" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
@@ -554,25 +545,22 @@
             </form>
             <form id="ihtCalcFormPage4" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 4" id="questions-page4">
-                    <h3>Main Home</h3>
+                    <h1>Your main home</h1>
 
                     <div class="coop-form__row">
                         <fieldset>
-                            <legend class="coop-c-form-choice__legend">When you both die who do you intend to leave your main home to?</legend>
+                            <legend class="coop-c-form-choice__legend">When you've both died, will you leave your main home to any children, grandchildren, or great-grandchildren?                                    <span class="coop-label__hint">This includes any adopted, foster or step-children</span>
+</legend>
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="leaveMainHomeTo" id="leaveMainHomeTo-1" value="1"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeTo" required>
-                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-1">A lineal descendant such as children, grandchildren, great-granchildren (including adopted, foster and step-children)</label>
+                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-1">Yes</label>
                             </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="leaveMainHomeTo" id="leaveMainHomeTo-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeTo" required>
-                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-2">A husband, wife or civil partner of a lineal descendant (including their widow, widower or surviving civil partner)</label>
-                            </div>
+                          
                             <div class="coop-c-form-choice">
                                 <input type="radio" name="leaveMainHomeTo" id="leaveMainHomeTo-3" value="3"
                                        class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeTo" required>
-                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-3">Somebody else</label>
+                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-3">No</label>
                             </div>
                             <error-message :show-errors="pageFourSubmitted" :field="errors.leaveMainHomeTo" />
                         </fieldset>
@@ -588,56 +576,125 @@
             <form id="ihtCalcFormPage5" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 5" id="calculation">
 
-                    <h2 id="estateOverThreshold" v-if="netEstateValue >= netEstateValueThreshold">For estates over £2 million contact Co-op Legal Services to see how you can reduce your Inheritance Tax with Revocable Life Interest Trust Wills</h2>
+                    <h1 id="estateOverThreshold" v-if="netEstateValue >= netEstateValueThreshold">Your inheritance tax calculations are complex — but we can help</h1>
+
+                    <p>Because your estate is worth more than £2 million, your inheritance tax is quite complex and we can’t easily calculate what it will be.</p>   
+
+                    <p>But we can talk you through it and maybe help you reduce your inheritance tax bill with our Revocable life interest trust will. </p>
+
+<div id="refer">
+                        <a class="coop-btn coop-btn--primary" role="button">Call us</a> <br/> <br/>
+                        <a class="coop-btn coop-btn--primary" role="button">Request a callback</a> <br/>
+                        <br>
+                      </div>
+
+                       <p>
+                                <a href="/files/rlit-infographic.pdf" target="_blank">
+                                    
+                                    See an example
+                                </a> of how our Revocable life interest trusts wills work.
+                            </p>
                     <div v-else>
                         <div id="noTax" v-if="ihtTotal == 0">
-                            <h2>We estimate you will have no inheritance tax bill</h2>
-                            <h2 v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">Recipients of the gifts you have given may need to pay additional inheritance tax</h2>
-                        </div>
-                        <div id="hasTax" v-if="ihtTotal > 0">
-                            <h2 id="hasTax">We estimate your inheritance tax bill will be £{{ihtTotal.toLocaleString()}}</h2>
-                            <h2 v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">Recipients of the gifts you have given may need to pay additional inheritance tax</h2>
-                            <br />
-                            <h3>Co-op Legal Services may be able to help you reduce your inheritance tax bill with Revocable Life Interest Trust Wills</h3>
-                            <p>
-                                <a href="/files/rlit-infographic.pdf" target="_blank">
-                                    <i class="fas fa-chart-pie coop-u-link-hover-blue"></i>
-                                    &nbsp;Find out more about Revocable Life Interest Trust Wills
-                                </a>
-                            </p>
+                            <h1>We estimate you will have no inheritance tax bill</h1>
+                            <p v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">The people you have given money or assets to might need to pay additional inheritance tax.</p>
+
                             <details>
-                                <summary class="title">See how inheritance tax is calculated</summary>
+                                <summary class="title">Show the calculation</summary>
                                 <ul>
                                     <li>Assets worth: £{{assetsTotal.toLocaleString()}}</li>
                                     <li>Liabilities (the things you owe): £{{liabTotal.toLocaleString()}}</li>
                                     <li>Total value of your estate is: £{{netEstateValue.toLocaleString()}}</li>
                                     <li>Taxable Gifts over the last 7 years: £{{giftsTotal.toLocaleString()}}</li>
                                     <li>Nil Rate Band Allowance (NRB) is: £{{nilRateBand.toLocaleString()}}</li>
+                                 </ul>
+
+                                    <ul>
+                                    <li>Residential Nil Rate Band Allowance (RNRB) is: £{{residualNilRateBandAllowance.toLocaleString()}}</li>
+                                    <li>Net value of estate for inheritance tax: £{{netEstateValueForIHT.toLocaleString()}}</li>
+                                    <li>The rate of inheritance tax is 40%</li>
+                                    <li class="title">Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
+                                </ul>
+
+                                <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
+
+                                <p>This calculation assumes you and your partner are:</p>
+                                <ul>
+                                <li>legally married or in a civil partnership</li>
+                                <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
+                                <li>leaving your estates to each other after the first death</li>
+                                <li>wanting your estate to pass to family or friends after you have both died</li>
+                                <li>not planning to leave your estate to a new husband, wife or civil partner, or to charity</li>
+                            </ul>
+
+
+                            </details>
+
+                            <h2>While you're here</h2>
+
+                            <p You might want to:</p>
+                                <ul>
+                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/">create an up-to-date will</a></li>
+                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/trust-wills/">set up a trust will</a> — if you want to make sure someone in particular receives your inheritance and prevent it being used to pay for care home fees</li>
+                                    <li><a href="https://estateplanning.coop.co.uk/lasting-power-of-attorney/">make a lasting power of attorney</a> — to control what happens to you if you have an accident or an illness and cannot make your own decisions</li>
+                                </ul>
+
+                        </div>
+                        <div id="hasTax" v-if="ihtTotal > 0">
+                            <h2 id="hasTax">We estimate your inheritance tax bill will be £{{ihtTotal.toLocaleString()}}</h2>
+                            <p v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">The people you have given money or assets to might need to pay additional inheritance tax.</p>
+                            
+                            <details>
+                                <summary class="title">Show the calculation</summary>
+                                <ul>
+                                    <li>Assets worth: £{{assetsTotal.toLocaleString()}}</li>
+                                    <li>Liabilities (the things you owe): £{{liabTotal.toLocaleString()}}</li>
+                                    <li>Total value of your estate is: £{{netEstateValue.toLocaleString()}}</li>
+                                    <li>Taxable Gifts over the last 7 years: £{{giftsTotal.toLocaleString()}}</li>
+                                    <li>Nil Rate Band Allowance (NRB) is: £{{nilRateBand.toLocaleString()}}</li>
+                                 </ul>
+
+                                    <ul>
                                     <li>Residential Nil Rate Band Allowance (RNRB) is: £{{residualNilRateBandAllowance.toLocaleString()}}</li>
                                     <li>Net value of estate for inheritance tax: £{{netEstateValueForIHT.toLocaleString()}}</li>
                                     <li>The rate of inheritance tax is 40%</li>
                                     <li>Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
                                 </ul>
-                            </details>
-                        </div>
 
-                        <details>
-                            <summary class="title">Assumptions</summary>
-                            <ul>
-                                <li>The couple are married or in a civil partnership</li>
-                                <li>The couple are both considered domiciled for inheritance tax purposes in the United Kingdom</li>
-                                <li>The couple are leaving their respective estates to each other on the first death</li>
-                                <li>The surviving partner will leave their estate to people other than a spouse/registered civil partner or charity</li>
-                                <li>The calculator may not factor in all exemptions,  elections, reliefs or tapering that may be available</li>
+                                <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
+
+                                <p>This calculation assumes you and your partner are:</p>
+                                <ul>
+                                <li>legally married or in a civil partnership</li>
+                                <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
+                                <li>leaving your estates to each other after the first death</li>
+                                <li>wanting your estate to pass to family or friends after you have both died</li>
+                                <li>not planning to leave your estate to a new husband, wife or civil partner, or to charity</li>
                             </ul>
-                        </details>
-                    </div>
-                    <br />
-                    <div id="refer">
+
+
+                            </details>
+
+                            <p>We might be able to help you reduce your inheritance tax bill with our Revocable life interest trust will. </p>
+                        
+                            <div id="refer">
                         <a class="coop-btn coop-btn--primary" role="button">Call us</a> <br/> <br/>
                         <a class="coop-btn coop-btn--primary" role="button">Request a callback</a> <br/>
                         <br>
                       </div>
+
+                       <p>
+                                <a href="/files/rlit-infographic.pdf" target="_blank">
+                                    
+                                    See an example
+                                </a> of how our Revocable life interest trusts wills work.
+                            </p>
+                        </div>
+
+                    
+                    </div>
+                    
+                    
                 </template>
             </form>
             <br />
