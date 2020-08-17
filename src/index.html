@@ -82,7 +82,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsHomeValue" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">Do either of you own any other property in England or Wales?</legend>
@@ -105,7 +105,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsHomeOtherExists" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset class="coop-c-form-choice">
                             <legend class="coop-c-form-choice__legend"><label for="assetsInvestmentValue">What is the value of you and your partner’s cash and investments?</label>
@@ -116,7 +116,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsInvestmentValue" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">Do either of you have life insurance policies (not held in trust)?</legend>
@@ -139,7 +139,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsLifeInsuranceExists" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset class="coop-c-form-choice">
                             <legend class="coop-c-form-choice__legend"><label for="assetsPossessionValue">What is the current value of both of your personal possesions?</label><span class="coop-label__hint">Eg vehicles or jewellery</span></legend>
@@ -148,7 +148,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsPossessionValue" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">Do either of you have any foreign assets?</legend>
@@ -158,7 +158,7 @@
                                 <label class="coop-c-form-choice__label" for="assetsForeignExists-1">Yes</label>
                             </div>
                             <div v-if="assetsForeignExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsForeignValue">Huch much are your foreign assets worth?</label></legend>
+                                <legend class="coop-form__label"><label for="assetsForeignValue">How much are your foreign assets worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsForeignValue"
                                        id="assetsForeignValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsForeignValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetsForeignValue" />
@@ -171,7 +171,7 @@
                             <error-message :show-errors="pageOneSubmitted" :field="errors.assetsForeignExists" />
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">Do either of you expect to receive any future inheritance?</legend>
@@ -181,7 +181,7 @@
                                 <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-1">Yes</label>
                             </div>
                             <div v-if="assetFurtherInheritanceExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">Huch much do you think this inheritance is worth?</label></legend>
+                                <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">How much do you think this inheritance is worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetFurtherInheritanceValue"
                                        id="assetFurtherInheritanceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetFurtherInheritanceValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetFurtherInheritanceValue" />
@@ -195,7 +195,7 @@
 
                         </fieldset>
                     </div>
-
+<br />
                     <div class="coop-form__row">
                         <fieldset>
                             <legend class="coop-c-form-choice__legend">Do either of you have any other assets?</legend>
@@ -205,7 +205,7 @@
                                 <label class="coop-c-form-choice__label" for="assetsOtherExists-1">Yes</label>
                             </div>
                             <div v-if="assetsOtherExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsOtherValue">Huch much are these assets worth?</label></legend>
+                                <legend class="coop-form__label"><label for="assetsOtherValue">How much are these assets worth?</label></legend>
                                 <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsOtherValue"
                                        id="assetsOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsOtherValue" required min="0.01" step="0.01">
                                 <error-message :show-errors="pageOneSubmitted" :field="errors.assetsOtherValue" />
@@ -617,7 +617,7 @@ Have you given away any money or things worth over £3,000 in the last 7 years? 
                                     <li>The rate of inheritance tax is 40%</li>
                                     <li class="title">Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
                                 </ul>
-
+<br />
                                 <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
 
                                 <p>This calculation assumes you and your partner are:</p>
@@ -662,7 +662,7 @@ Have you given away any money or things worth over £3,000 in the last 7 years? 
                                     <li>The rate of inheritance tax is 40%</li>
                                     <li>Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
                                 </ul>
-
+<br />
                                 <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
 
                                 <p>This calculation assumes you and your partner are:</p>
