@@ -576,7 +576,8 @@ Have you given away any money or things worth over £3,000 in the last 7 years? 
             <form id="ihtCalcFormPage5" v-on:submit.prevent v-on:submit="" novalidate>
                 <template v-if="currentPage == 5" id="calculation">
 
-                    <h1 id="estateOverThreshold" v-if="netEstateValue >= netEstateValueThreshold">Your inheritance tax calculations are complex — but we can help</h1>
+                    <div id="estateOverThreshold" v-if="netEstateValue >= netEstateValueThreshold">
+                    <h1>Your inheritance tax calculations are complex — but we can help</h1>
 
                     <p>Because your estate is worth more than £2 million, your inheritance tax is quite complex and we can’t easily calculate what it will be.</p>   
 
@@ -594,6 +595,7 @@ Have you given away any money or things worth over £3,000 in the last 7 years? 
                                     See an example
                                 </a> of how our Revocable life interest trusts wills work.
                             </p>
+                    </div>
                     <div v-else>
                         <div id="noTax" v-if="ihtTotal == 0">
                             <h1>We estimate you will have no inheritance tax bill</h1>
@@ -632,7 +634,7 @@ Have you given away any money or things worth over £3,000 in the last 7 years? 
 
                             <h2>While you're here</h2>
 
-                            <p You might want to:</p>
+                            <p> You might want to:</p>
                                 <ul>
                                     <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/">create an up-to-date will</a></li>
                                     <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/trust-wills/">set up a trust will</a> — if you want to make sure someone in particular receives your inheritance and prevent it being used to pay for care home fees</li>
