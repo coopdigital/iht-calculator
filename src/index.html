@@ -6,7 +6,7 @@
 
     <title>Co-op Legal Services</title>
 
-    <link rel="icon" type="image/x-icon" href="https://preprod.les.coop.co.uk/img/icon-72x72.png">
+    <link rel="icon" type="image/x-icon" href="https://legal-enquiry-service-qa.cls-dev.digital.coop.co.uk/img/icon-72x72.png">
 
         <link rel="stylesheet" type="text/css" href="assets/main.min.css">
 
@@ -18,13 +18,13 @@
         </ul>
     </nav>
 
-        <div class="prototype-banner" style="color:#fff;background:#406ab2;padding:16px 0px 1px 0px;">
-          <div class="coop-l-wrap">
-            <p>
-            <!--  <span class="coop-c-tag">Prototype</span> -->
-              This is a prototype for testing purposes only.</p>
-          </div>
-        </div>
+    <div class="prototype-banner" style="color:#fff;background:#406ab2;padding:16px 0px 1px 0px;">
+      <div class="coop-l-wrap">
+        <p>
+        <!--  <span class="coop-c-tag">Prototype</span> -->
+          This is a prototype for testing purposes only.</p>
+      </div>
+    </div>
 
     <div class="content-wrapper">
         <header class="ds-header ds-header--inner">
@@ -41,700 +41,782 @@
         <main id="main" class="main">
             <article>
                 <div class="coop-l-wrap">
-
-
-    <div id="cookieConsent" class="coop-c-notification" role="status">
-        <h3 class="coop-c-notification__heading">Cookies</h3>
-        <p class="coop-c-notification__p">
-            This application uses cookies, please see the Co-op Privacy &amp; Cookie Policies, <a href="https://preprod.les.coop.co.uk/privacy">Learn More</a>.
-            <button type="button" class="coop-btn coop-btn--small" aria-label="Close" data-cookie-string=".AspNet.Consent=yes; expires=Fri, 23 Jul 2021 12:45:45 GMT; path=/; secure; samesite=none">
-                <span aria-hidden="true">Accept</span>
-            </button>
-        </p>
-    </div>
-    <script>
-        (function () {
-            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
-            button.addEventListener("click", function (event) {
-                document.cookie = button.dataset.cookieString;
-                var elem = document.getElementById("cookieConsent");
-                if(elem) {elem.style.display = 'none';}
-            }, false);
-        })();
-    </script>
-
-
-    <div id="ihtCalcApp" class="coop-l-row">
-        <div class="coop-l-column coop-l-large-7">
-            <form id="ihtCalcFormPage1" v-on:submit.prevent v-on:submit="" novalidate>
-                <template v-if="currentPage == 1" id="questions-page1">
-
-                    <h1>You and your partner's assets</h1>
-                   
-                    <br />
-                   
-
-                    <div class="coop-form__row">
-                        <fieldset class="coop-c-form-choice">
-                            <legend class="coop-c-form-choice__legend"><label for="assetsHomeValue">What is the value of your main home?</label></legend>
-                            <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsHomeValue"
-                                   id="assetsHomeValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsHomeValue" required min="0.01" step="0.01">
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsHomeValue" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you own any other property in England or Wales?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsHomeOtherExists" id="assetsHomeOtherExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsHomeOtherExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsHomeOtherExists-1">Yes</label>
-                            </div>
-                            <div v-if="assetsHomeOtherExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsHomeOtherValue">How much is it worth?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsHomeOtherValue"
-                                       id="assetsHomeOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsHomeOtherValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageOneSubmitted" :field="errors.assetsHomeOtherValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsHomeOtherExists" id="assetsHomeOtherExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsHomeOtherExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsHomeOtherExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsHomeOtherExists" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset class="coop-c-form-choice">
-                            <legend class="coop-c-form-choice__legend"><label for="assetsInvestmentValue">What is the value of you and your partner’s cash and investments?</label>
-<span class="coop-label__hint">Eg stocks and shares</span>
-</legend>
-                            <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsInvestmentValue"
-                                   id="assetsInvestmentValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsInvestmentValue" min="0.01" step="0.01">
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsInvestmentValue" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have life insurance policies (not held in trust)?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsLifeInsuranceExists" id="assetsLifeInsuranceExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsLifeInsuranceExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsLifeInsuranceExists-1">Yes</label>
-                            </div>
-                            <div v-if="assetsLifeInsuranceExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsLifeInsuranceValue">How much is it worth?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsLifeInsuranceValue"
-                                       id="assetsLifeInsuranceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsLifeInsuranceValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageOneSubmitted" :field="errors.assetsLifeInsuranceValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsLifeInsuranceExists" id="assetsLifeInsuranceExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsLifeInsuranceExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsLifeInsuranceExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsLifeInsuranceExists" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset class="coop-c-form-choice">
-                            <legend class="coop-c-form-choice__legend"><label for="assetsPossessionValue">What is the current value of both of your personal possesions?</label><span class="coop-label__hint">Eg vehicles or jewellery</span></legend>
-                            <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsPossessionValue"
-                                   id="assetsPossessionValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsPossessionValue" min="0.01" step="0.01">
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsPossessionValue" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have any foreign assets?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsForeignExists" id="assetsForeignExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsForeignExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsForeignExists-1">Yes</label>
-                            </div>
-                            <div v-if="assetsForeignExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsForeignValue">How much are your foreign assets worth?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsForeignValue"
-                                       id="assetsForeignValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsForeignValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageOneSubmitted" :field="errors.assetsForeignValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsForeignExists" id="assetsForeignExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsForeignExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsForeignExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsForeignExists" />
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you expect to receive any future inheritance?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetFurtherInheritanceExists" id="assetFurtherInheritanceExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetFurtherInheritanceExists" required>
-                                <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-1">Yes</label>
-                            </div>
-                            <div v-if="assetFurtherInheritanceExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">How much do you think this inheritance is worth?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetFurtherInheritanceValue"
-                                       id="assetFurtherInheritanceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetFurtherInheritanceValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageOneSubmitted" :field="errors.assetFurtherInheritanceValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetFurtherInheritanceExists" id="assetFurtherInheritanceExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetFurtherInheritanceExists" required>
-                                <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetFurtherInheritanceExists" />
-
-                        </fieldset>
-                    </div>
-<br />
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have any other assets?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsOtherExists" id="assetsOtherExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsOtherExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsOtherExists-1">Yes</label>
-                            </div>
-                            <div v-if="assetsOtherExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="assetsOtherValue">How much are these assets worth?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsOtherValue"
-                                       id="assetsOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="assetsOtherValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageOneSubmitted" :field="errors.assetsOtherValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="assetsOtherExists" id="assetsOtherExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsOtherExists" required>
-                                <label class="coop-c-form-choice__label" for="assetsOtherExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageOneSubmitted" :field="errors.assetsOtherExists" />
-                        </fieldset>
-                    </div>
-
-                    <button id="buttonPage1" class="coop-btn coop-btn--primary" type="button" v-on:click="pageOneSubmit()">Next</button>
-                    <br />
-                    <br />
-                </template>
-            </form>
-
-            <form id="ihtCalcFormPage2" v-on:submit.prevent v-on:submit="" novalidate>
-                <template v-if="currentPage == 2" id="questions-page2">
-
-                    <h1>You and your partner’s debts</h1>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do you have a mortgage on your main home?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabMortgageExists" id="liabMortgageExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageExists" required>
-                                <label class="coop-c-form-choice__label" for="liabMortgageExists-1">Yes</label>
-                            </div>
-                            <div v-if="liabMortgageExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabMortageValue">How much do you owe on your mortgage for your main home?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabMortageValue"
-                                       id="liabMortageValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabMortageValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageTwoSubmitted" :field="errors.liabMortageValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabMortgageExists" id="liabMortgageExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageExists" required>
-                                <label class="coop-c-form-choice__label" for="liabMortgageExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageTwoSubmitted" :field="errors.liabMortgageExists" />
-                        </fieldset>
-                    </div>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have any outstanding bank overdrafts?</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabOverdraftExists" id="liabOverdraftExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOverdraftExists" required>
-                                <label class="coop-c-form-choice__label" for="liabOverdraftExists-1">Yes</label>
-                            </div>
-                            <div v-if="liabOverdraftExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabOverdraftValue">How much do you both owe on your overdrafts?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOverdraftValue"
-                                       id="liabOverdraftValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabOverdraftValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOverdraftValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabOverdraftExists" id="liabOverdraftExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOverdraftExists" required>
-                                <label class="coop-c-form-choice__label" for="liabOverdraftExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOverdraftExists" />
-
-                        </fieldset>
-                    </div>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have any credit card debt?</legend>
-                            <div id="liabCreditCardExists" class="coop-c-form-choice">
-                                <input type="radio" name="liabCreditCardExists" id="liabCreditCardExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabCreditCardExists" required>
-                                <label class="coop-c-form-choice__label" for="liabCreditCardExists-1">Yes</label>
-                            </div>
-                            <div v-if="liabCreditCardExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabCreditCardValue">How much do you owe on your credit cards?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabCreditCardValue"
-                                       id="liabCreditCardValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabCreditCardValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageTwoSubmitted" :field="errors.liabCreditCardValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabCreditCardExists" id="liabCreditCardExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabCreditCardExists" required>
-                                <label class="coop-c-form-choice__label" for="liabCreditCardExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageTwoSubmitted" :field="errors.liabCreditCardExists" />
-
-                        </fieldset>
-                    </div>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">Do either of you have any outstanding loans?</legend>
-                            <div id="liabLoanExists" class="coop-c-form-choice">
-                                <input type="radio" name="liabLoanExists" id="liabLoanExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabLoanExists" required>
-                                <label class="coop-c-form-choice__label" for="liabLoanExists-1">Yes</label>
-                            </div>
-                            <div v-if="liabLoanExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabLoanValue">How much do you owe for your loans?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabLoanValue"
-                                       id="liabLoanValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabLoanValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageTwoSubmitted" :field="errors.liabLoanValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabLoanExists" id="liabLoanExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabLoanExists" required>
-                                <label class="coop-c-form-choice__label" for="liabLoanExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageTwoSubmitted" :field="errors.liabLoanExists" />
-                        </fieldset>
-                    </div>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">
-                                Do you have any other debts?
-                                <span class="coop-label__hint">Including any mortgage debt from properties other than your main home</span>
-                            </legend>
-                            <div id="liabOtherDebtExists" class="coop-c-form-choice">
-                                <input type="radio" name="liabOtherDebtExists" id="liabOtherDebtExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOtherDebtExists" required>
-                                <label class="coop-c-form-choice__label" for="liabOtherDebtExists-1">Yes</label>
-                            </div>
-                            <div v-if="liabOtherDebtExists == '1'" class="coop-form__indented">
-                                <legend class="coop-form__label"><label for="liabOtherDebtValue">How much do you owe for these debts?</label></legend>
-                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOtherDebtValue"
-                                       id="liabOtherDebtValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabOtherDebtValue" required min="0.01" step="0.01">
-                                <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOtherDebtValue" />
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="liabOtherDebtExists" id="liabOtherDebtExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOtherDebtExists" required>
-                                <label class="coop-c-form-choice__label" for="liabOtherDebtExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageTwoSubmitted" :field="errors.liabOtherDebtExists" />
-                        </fieldset>
-                    </div>
-
-                    <button id="buttonPage2" class="coop-btn coop-btn--primary" type="button" v-on:click="pageTwoSubmit()">Next</button>
-                    <br />
-                    <br />
-                    <button id="back-Page2" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
-                </template>
-
-            </form>
-            <form id="ihtCalcFormPage3" v-on:submit.prevent v-on:submit="" novalidate>
-                <template v-if="currentPage == 3" id="questions-page3">
-
-                    <h1>Giving things to people</h1>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">
-Have you given away any money or things worth over £3,000 in the last 7 years?                                <span class="coop-label__hint">Eg giving money to a child for a house deposit. Don’t include gifts to each other </span>
-                            </legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="giftExists" id="giftExists-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="giftExists" required>
-                                <label class="coop-c-form-choice__label" for="giftExists-1">Yes</label>
-                            </div>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="giftExists" id="giftExists-2" value="2"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="giftExists" required>
-                                <label class="coop-c-form-choice__label" for="giftExists-2">No</label>
-                            </div>
-                            <error-message :show-errors="pageThreeSubmitted" :field="errors.giftExists" />
-
-                        </fieldset>
-                    </div>
-
-                    <div v-if="giftExists == '1'">
-                        <section name="personA">
-                            <h3>Gifts given by person A <span class="coop-label__hint">Enter the total value of gifts for each tax year</span></h3>
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue0">{{giftLabels[0]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue0"
-                                           id="personAValue0" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year0" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue0" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue1">{{giftLabels[1]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue1"
-                                           id="personAValue1" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year1" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue1" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue2">{{giftLabels[2]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue2"
-                                           id="personAValue2" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year2" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue2" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue3">{{giftLabels[3]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue3"
-                                           id="personAValue3" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year3" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue3" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue4">{{giftLabels[4]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue4"
-                                           id="personAValue4" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year4" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue4" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue5">{{giftLabels[5]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue5"
-                                           id="personAValue5" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year5" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue5" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue6">{{giftLabels[6]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue6"
-                                           id="personAValue6" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year6" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue6" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personAValue7">{{giftLabels[7]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue7"
-                                           id="personAValue7" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personA.year7" min="0.01" step="0.01">
-                                    <span class="coop-label__hint">The 8th tax year is only included to capture whether there is any gift allowance to be rolled over to 7th tax year</span>
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personAValue7" />
-                                </fieldset>
-                            </div>
-                        </section>
-
-                        <section name="personB">
-                            <h3>Gifts given by person B <span class="coop-label__hint">Enter the total value of gifts for each tax year</span></h3>
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue0">{{giftLabels[0]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue0"
-                                           id="personBValue0" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year0" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue0" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue1">{{giftLabels[1]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue1"
-                                           id="personBValue1" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year1" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue1" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue2">{{giftLabels[2]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue2"
-                                           id="personBValue2" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year2" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue2" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue3">{{giftLabels[3]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue3"
-                                           id="personBValue3" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year3" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue3" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue4">{{giftLabels[4]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue4"
-                                           id="personBValue4" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year4" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue4" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue5">{{giftLabels[5]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue5"
-                                           id="personBValue5" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year5" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue5" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue6">{{giftLabels[6]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue6"
-                                           id="personBValue6" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year6" min="0.01" step="0.01">
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue6" />
-                                </fieldset>
-                            </div>
-
-                            <div class="coop-form__row">
-                                <fieldset class="coop-c-form-choice">
-                                    <legend class="coop-c-form-choice__legend"><label for="personBValue7">{{giftLabels[7]}}</label></legend>
-                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue7"
-                                           id="personBValue7" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="gifts.personB.year7" min="0.01" step="0.01">
-                                    <span class="coop-label__hint">The 8th tax year is only included to capture whether there is any gift allowance to be rolled over to 7th tax year</span>
-                                    <error-message :show-errors="pageThreeSubmitted" :field="errors.personBValue7" />
-                                </fieldset>
-                            </div>
-                        </section>
-                    </div>
-
-                    <button id="buttonPage3" class="coop-btn coop-btn--primary" type="button" v-on:click="pageThreeSubmit()">Next</button>
-                    <br />
-                    <br />
-                    <button id="back-Page3" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
-
-                </template>
-            </form>
-            <form id="ihtCalcFormPage4" v-on:submit.prevent v-on:submit="" novalidate>
-                <template v-if="currentPage == 4" id="questions-page4">
-                    <h1>Your main home</h1>
-
-                    <div class="coop-form__row">
-                        <fieldset>
-                            <legend class="coop-c-form-choice__legend">When you've both died, will you leave your main home to any children, grandchildren, or great-grandchildren?                                    <span class="coop-label__hint">This includes any adopted, foster or step-children</span>
-</legend>
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="leaveMainHomeTo" id="leaveMainHomeTo-1" value="1"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeTo" required>
-                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-1">Yes</label>
-                            </div>
-                          
-                            <div class="coop-c-form-choice">
-                                <input type="radio" name="leaveMainHomeTo" id="leaveMainHomeTo-3" value="3"
-                                       class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeTo" required>
-                                <label class="coop-c-form-choice__label" for="leaveMainHomeTo-3">No</label>
-                            </div>
-                            <error-message :show-errors="pageFourSubmitted" :field="errors.leaveMainHomeTo" />
-                        </fieldset>
-                    </div>
-
-                    <button id="buttonPage4" class="coop-btn coop-btn--primary" type="button" v-on:click="pageFourSubmit()">Calculate</button>
-                    <br />
-                    <br />
-                    <button id="back-Page4" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
-                </template>
-            </form>
-
-            <form id="ihtCalcFormPage5" v-on:submit.prevent v-on:submit="" novalidate>
-                <template v-if="currentPage == 5" id="calculation">
-
-                    <div id="estateOverThreshold" v-if="netEstateValue >= netEstateValueThreshold">
-                    <h1>Your inheritance tax calculations are complex — but we can help</h1>
-
-                    <p>Because your estate is worth more than £2 million, your inheritance tax is quite complex and we can’t easily calculate what it will be.</p>   
-
-                    <p>But we can talk you through it and maybe help you reduce your inheritance tax bill with our Revocable life interest trust will. </p>
-
-<div id="refer">
-                        <a class="coop-btn coop-btn--primary" role="button">Call us</a> <br/> <br/>
-                        <a class="coop-btn coop-btn--primary" role="button">Request a callback</a> <br/>
-                        <br>
-                      </div>
-
-                       <p>
-                                <a href="/files/rlit-infographic.pdf" target="_blank">
-                                    
-                                    See an example
-                                </a> of how our Revocable life interest trusts wills work.
-                            </p>
-                    </div>
-                    <div v-else>
-                        <div id="noTax" v-if="ihtTotal == 0">
-                            <h1>We estimate you will have no inheritance tax bill</h1>
-                            <p v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">The people you have given money or assets to might need to pay additional inheritance tax.</p>
-
-                            <details>
-                                <summary class="title">Show the calculation</summary>
-                                <ul>
-                                    <li>Assets worth: £{{assetsTotal.toLocaleString()}}</li>
-                                    <li>Liabilities (the things you owe): £{{liabTotal.toLocaleString()}}</li>
-                                    <li>Total value of your estate is: £{{netEstateValue.toLocaleString()}}</li>
-                                    <li>Taxable Gifts over the last 7 years: £{{giftsTotal.toLocaleString()}}</li>
-                                    <li>Nil Rate Band Allowance (NRB) is: £{{nilRateBand.toLocaleString()}}</li>
-                                 </ul>
-
-                                    <ul>
-                                    <li>Residential Nil Rate Band Allowance (RNRB) is: £{{residualNilRateBandAllowance.toLocaleString()}}</li>
-                                    <li>Net value of estate for inheritance tax: £{{netEstateValueForIHT.toLocaleString()}}</li>
-                                    <li>The rate of inheritance tax is 40%</li>
-                                    <li class="title">Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
-                                </ul>
-<br />
-                                <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
-
-                                <p>This calculation assumes you and your partner are:</p>
-                                <ul>
-                                <li>legally married or in a civil partnership</li>
-                                <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
-                                <li>leaving your estates to each other after the first death</li>
-                                <li>wanting your estate to pass to family or friends after you have both died</li>
-                                <li>not planning to leave your estate to a new husband, wife or civil partner, or to charity</li>
-                            </ul>
-
-
-                            </details>
-
-                            <h2>While you're here</h2>
-
-                            <p> You might want to:</p>
-                                <ul>
-                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/">create an up-to-date will</a></li>
-                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/trust-wills/">set up a trust will</a> — if you want to make sure someone in particular receives your inheritance and prevent it being used to pay for care home fees</li>
-                                    <li><a href="https://estateplanning.coop.co.uk/lasting-power-of-attorney/">make a lasting power of attorney</a> — to control what happens to you if you have an accident or an illness and cannot make your own decisions</li>
-                                </ul>
-
-                        </div>
-                        <div id="hasTax" v-if="ihtTotal > 0">
-                            <h2 id="hasTax">We estimate your inheritance tax bill will be £{{ihtTotal.toLocaleString()}}</h2>
-                            <p v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">The people you have given money or assets to might need to pay additional inheritance tax.</p>
-                            
-                            <details>
-                                <summary class="title">Show the calculation</summary>
-                                <ul>
-                                    <li>Assets worth: £{{assetsTotal.toLocaleString()}}</li>
-                                    <li>Liabilities (the things you owe): £{{liabTotal.toLocaleString()}}</li>
-                                    <li>Total value of your estate is: £{{netEstateValue.toLocaleString()}}</li>
-                                    <li>Taxable Gifts over the last 7 years: £{{giftsTotal.toLocaleString()}}</li>
-                                    <li>Nil Rate Band Allowance (NRB) is: £{{nilRateBand.toLocaleString()}}</li>
-                                 </ul>
-
-                                    <ul>
-                                    <li>Residential Nil Rate Band Allowance (RNRB) is: £{{residualNilRateBandAllowance.toLocaleString()}}</li>
-                                    <li>Net value of estate for inheritance tax: £{{netEstateValueForIHT.toLocaleString()}}</li>
-                                    <li>The rate of inheritance tax is 40%</li>
-                                    <li>Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
-                                </ul>
-<br />
-                                <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
-
-                                <p>This calculation assumes you and your partner are:</p>
-                                <ul>
-                                <li>legally married or in a civil partnership</li>
-                                <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
-                                <li>leaving your estates to each other after the first death</li>
-                                <li>wanting your estate to pass to family or friends after you have both died</li>
-                                <li>not planning to leave your estate to a new husband, wife or civil partner, or to charity</li>
-                            </ul>
-
-
-                            </details>
-
-                            <p>We might be able to help you reduce your inheritance tax bill with our Revocable life interest trust will. </p>
-                        
-                            <div id="refer">
-                        <a class="coop-btn coop-btn--primary" role="button">Call us</a> <br/> <br/>
-                        <a class="coop-btn coop-btn--primary" role="button">Request a callback</a> <br/>
-                        <br>
-                      </div>
-
-                       <p>
-                                <a href="/files/rlit-infographic.pdf" target="_blank">
-                                    
-                                    See an example
-                                </a> of how our Revocable life interest trusts wills work.
-                            </p>
-                        </div>
-
-                    
-                    </div>
-                    
-                    
-                </template>
-            </form>
-            <br />
-            <br />
+        <div id="cookieConsent" class="coop-c-notification" role="status">
+            <h3 class="coop-c-notification__heading">Cookies</h3>
+            <p class="coop-c-notification__p">
+                This application uses cookies, please see the Co-op Privacy &amp; Cookie Policies, <a href="">Learn More</a>.
+                <button type="button" class="coop-btn coop-btn--small" aria-label="Close" data-cookie-string=".AspNet.Consent=yes; expires=Tue, 07 Sep 2021 10:20:08 GMT; path=/; secure; samesite=none">
+                    <span aria-hidden="true">Accept</span>
+                </button>
+            </p>
         </div>
-    </div>
+        <script>
+            (function () {
+                var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+                button.addEventListener("click", function (event) {
+                    document.cookie = button.dataset.cookieString;
+                    var elem = document.getElementById("cookieConsent");
+                    if(elem) {elem.style.display = 'none';}
+                }, false);
+            })();
+        </script>
 
-                </div>
-            </article>
-        </main>
+
+        <div id="ihtCalcApp" class="coop-l-row">
+            <div class="coop-l-column coop-l-large-7">
+
+                <form id="ihtCalcFormPage1" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 1" id="questions-page1">
+                        <h3>Calculate inheritance tax for you and your husband or wife</h3>
+                        <p>If you’re legally married or in a registered civil partnership, we can help you estimate your inheritance tax.</p>
+
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="relationship">Which of these describe your relationship?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.relationship"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="relationship" id="relationship-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="relationship" required>
+                                    <label class="coop-c-form-choice__label" for="relationship-1">Legally married</label>
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="relationship" id="relationship-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="relationship" required>
+                                    <label class="coop-c-form-choice__label" for="relationship-2">In a registered civil partnership</label>
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="relationship" id="relationship-3" value="3"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="relationship" required>
+                                    <label class="coop-c-form-choice__label" for="relationship-3">Not legally married or in a civil partnership</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                        <button id="buttonPage1" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <br />
+                    </template>
+                </form>
+
+                <form id="ihtCalcFormPage2" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 2" id="questions-page2">
+                        <div v-if="relationship == 1 || relationship == 2">
+                            <h3 v-if="relationship == 1">Inheritance tax for legally married couples</h3>
+                            <h3 v-if="relationship == 2">Inheritance tax for registered civil partnerships</h3>
+                            <p>For this calculation we assume that you and your partner are:</p>
+                            <ul>
+                                <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
+                                <li>leaving your estates to each other after the first death</li>
+                                <li>wanting your estate to pass to family or friends after you have both died</li>
+                                <li>not planning to leave your estate to a charity or to a new husband, wife or registered civil partner after the first death</li>
+                            </ul>
+                            <p>If you have an estate worth more than £2 million, things are a bit more complex. <a href="#">Refer your client today</a> to get our advice for reducing your inheritance tax bill.</p>
+                            <p>This is to be used as a guide only – it doesn’t constitute legal advice.</p>
+
+                            <button id="buttonPage2" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                            <br />
+                            <br />
+                            <button id="back-Page2" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                        </div>
+
+                        <div v-else>
+                            <h3>We cannot calculate your inheritance tax</h3>
+                            <p>Currently, this calculator only applies to couples that are legally married or in a registered civil parnership.</p>
+                            <p>If you want to plan ahead and protect your assets, you might want to:</p>
+                            <ul>
+                                <li><a href="https://www.co-oplegalservices.co.uk/making-a-will" class="coop-t-link">create an up-to-date will</a></li>
+                                <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/trust-wills" class="coop-t-link">set up a trust will</a> — if you want to make sure someone in particular receives your inheritance and prevent it being used to pay for care home fees</li>
+                                <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/lasting-powers-of-attorney" class="coop-t-link">make a lasting power of attorney</a> — to control what happens to you if you have an accident or an illness and cannot make your own decisions</li>
+                            </ul>
+                            <br />
+                            <br />
+                            <button id="back-Page-Cannot-Calculate" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                        </div>
+                    </template>
+                </form>
+
+                <form id="ihtCalcFormPage3" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 3" id="questions-page3">
+
+                        <h3>You and your partner’s assets</h3>
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset class="coop-c-form-choice">
+                                <legend class="coop-c-form-choice__legend"><label for="assetsHomeValue">How much is you and your partner’s main home worth?</label></legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsHomeValue"></error-message>
+                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsHomeValue"
+                                       id="assetsHomeValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsHomeValue && showFormValidation}" v-model.number="assetsHomeValue" required min="1" step="1">
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="assetsHomeOtherExists">Do either of you own any other property in England or Wales?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsHomeOtherExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsHomeOtherExists" id="assetsHomeOtherExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsHomeOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsHomeOtherExists-1">Yes</label>
+                                </div>
+                                <div v-if="assetsHomeOtherExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="assetsHomeOtherValue">How much is you and your partner’s property outside of England and Wales worth?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.assetsHomeOtherValue" id="assetsHomeOtherValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsHomeOtherValue"
+                                           id="assetsHomeOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsHomeOtherValue && showFormValidation}" v-model.number="assetsHomeOtherValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsHomeOtherExists" id="assetsHomeOtherExists-2" value="2" class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsHomeOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsHomeOtherExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset class="coop-c-form-choice">
+                                <legend class="coop-c-form-choice__legend">
+                                    <label for="assetsInvestmentValue">What’s the value of you and your partner’s cash and investments?</label>
+                                    <span class="coop-label__hint">Eg stocks and shares</span>
+                                </legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsInvestmentValue"></error-message>
+                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsInvestmentValue"
+                                       id="assetsInvestmentValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsInvestmentValue && showFormValidation}" v-model.number="assetsInvestmentValue" min="1" step="1">
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="assetsLifeInsuranceExists">Do either of you have life insurance policies (not held in trust)?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsLifeInsuranceExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsLifeInsuranceExists" id="assetsLifeInsuranceExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsLifeInsuranceExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsLifeInsuranceExists-1">Yes</label>
+                                </div>
+                                <div v-if="assetsLifeInsuranceExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="assetsLifeInsuranceValue">How much are you and your partner’s life insurance policies worth?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.assetsLifeInsuranceValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsLifeInsuranceValue"
+                                           id="assetsLifeInsuranceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsLifeInsuranceValue && showFormValidation}" v-model.number="assetsLifeInsuranceValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsLifeInsuranceExists" id="assetsLifeInsuranceExists-2" value="2" class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsLifeInsuranceExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsLifeInsuranceExists-2">No</label>
+                                </div>
+
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset class="coop-c-form-choice">
+                                <legend class="coop-c-form-choice__legend">
+                                    <label for="assetsPossessionValue">What is the current value of you and your partner’s personal possessions?</label>
+                                    <span class="coop-label__hint">Eg vehicles or jewellery</span>
+                                </legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsPossessionValue"></error-message>
+                                <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsPossessionValue"
+                                       id="assetsPossessionValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsPossessionValue && showFormValidation}" v-model.number="assetsPossessionValue" min="1" step="1">
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="assetFurtherInheritanceExists">Do either of you expect to receive any future inheritance?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetFurtherInheritanceExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetFurtherInheritanceExists" id="assetFurtherInheritanceExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetFurtherInheritanceExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-1">Yes</label>
+                                </div>
+                                <div v-if="assetFurtherInheritanceExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="assetFurtherInheritanceValue">How much future inheritance do you and your partner expect to receive?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.assetFurtherInheritanceValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetFurtherInheritanceValue"
+                                           id="assetFurtherInheritanceValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetFurtherInheritanceValue && showFormValidation}" v-model.number="assetFurtherInheritanceValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetFurtherInheritanceExists" id="assetFurtherInheritanceExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetFurtherInheritanceExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetFurtherInheritanceExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="assetsForeignExists">Do either of you have any foreign assets?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsForeignExists" itemid="assetsForeignExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsForeignExists" id="assetsForeignExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsForeignExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsForeignExists-1">Yes</label>
+                                </div>
+                                <div v-if="assetsForeignExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="assetsForeignValue">How much are you and your partner’s foreign assets worth?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.assetsForeignValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsForeignValue"
+                                           id="assetsForeignValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsForeignValue && showFormValidation}" v-model.number="assetsForeignValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsForeignExists" id="assetsForeignExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsForeignExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsForeignExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="assetsOtherExists">Do either of you have any other assets?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.assetsOtherExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsOtherExists" id="assetsOtherExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsOtherExists-1">Yes</label>
+                                </div>
+                                <div v-if="assetsOtherExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="assetsOtherValue">How much are you and your partner’s other assets worth?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.assetsOtherValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="assetsOtherValue"
+                                           id="assetsOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.assetsOtherValue && showFormValidation}" v-model.number="assetsOtherValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="assetsOtherExists" id="assetsOtherExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="assetsOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="assetsOtherExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <button id="buttonPage3" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <br />
+                        <br />
+                        <button id="back-Page3" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                    </template>
+                </form>
+
+                <form id="ihtCalcFormPage4" v-on:submit.prevent v-on:submit="" novalidate>
+
+                    <template v-if="currentPage == 4" id="questions-page4">
+
+                        <h3>You and your partner’s debts</h3>
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabMortgageExists">Is there a mortgage on you and your partner’s main home?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabMortgageExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabMortgageExists" id="liabMortgageExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-bind:class="{ 'coop-form__invalid': errors.liabMortgageExists && showFormValidation}" v-model="liabMortgageExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabMortgageExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabMortgageExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="liabMortageValue">How much is remaining on the mortgage for you and your partner’s main home?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabMortageValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabMortageValue"
+                                           id="liabMortageValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-model.number="liabMortageValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabMortgageExists" id="liabMortgageExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabMortgageExists-2">No</label>
+                                </div>
+
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabMortgageOtherExists">Do either of you have any other mortgages?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabMortgageOtherExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabMortgageOtherExists" id="liabMortgageOtherExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabMortgageOtherExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabMortgageOtherExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="liabMortgageOtherValue">How much do either of you owe on your other mortgages?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabMortgageOtherValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabMortgageOtherValue"
+                                           id="liabMortgageOtherValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.liabMortgageOtherValue && showFormValidation}" v-model.number="liabMortgageOtherValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabMortgageOtherExists" id="liabMortgageOtherExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabMortgageOtherExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabMortgageOtherExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabOverdraftExists">Do either of you have any outstanding bank overdrafts?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabOverdraftExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabOverdraftExists" id="liabOverdraftExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOverdraftExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabOverdraftExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabOverdraftExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label" id="liabOverdraftValue"><label for="liabOverdraftValue">How much do either of you owe on your overdrafts?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabOverdraftValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOverdraftValue"
+                                           id="liabOverdraftValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.liabOverdraftValue && showFormValidation}" v-model.number="liabOverdraftValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabOverdraftExists" id="liabOverdraftExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOverdraftExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabOverdraftExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabCreditCardExists">Do either of you have any credit card debt?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabCreditCardExists"></error-message>
+                                <div id="liabCreditCardExists" class="coop-c-form-choice">
+                                    <input type="radio" name="liabCreditCardExists" id="liabCreditCardExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabCreditCardExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabCreditCardExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabCreditCardExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label" id="liabCreditCardValue"><label for="liabCreditCardValue">How much do either of you owe on your credit cards?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabCreditCardValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabCreditCardValue"
+                                           id="liabCreditCardValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.liabCreditCardValue && showFormValidation}" v-model.number="liabCreditCardValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabCreditCardExists" id="liabCreditCardExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabCreditCardExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabCreditCardExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabLoanExists">Do either of you have any outstanding loans?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabLoanExists"></error-message>
+                                <div id="liabLoanExists" class="coop-c-form-choice">
+                                    <input type="radio" name="liabLoanExists" id="liabLoanExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabLoanExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabLoanExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabLoanExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label" id="liabLoanValue"><label for="liabLoanValue">How much do either of you owe for your loans?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabLoanValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabLoanValue"
+                                           id="liabLoanValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.liabLoanValue && showFormValidation}" v-model.number="liabLoanValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabLoanExists" id="liabLoanExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabLoanExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabLoanExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="liabOtherDebtExists">Do either of you have any other debts?</legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.liabOtherDebtExists"></error-message>
+                                <div id="liabOtherDebtExists" class="coop-c-form-choice">
+                                    <input type="radio" name="liabOtherDebtExists" id="liabOtherDebtExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOtherDebtExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabOtherDebtExists-1">Yes</label>
+                                </div>
+                                <div v-if="liabOtherDebtExists == '1'" class="coop-form__indented">
+                                    <legend class="coop-form__label"><label for="liabOtherDebtValue">How much do either of you owe for your other debts?</label></legend>
+                                    <error-message :show-errors="showFormValidation" :field="errors.liabOtherDebtValue"></error-message>
+                                    <input inputmode="numeric" pattern="[0-9]*" type="number" name="liabOtherDebtValue"
+                                           id="liabOtherDebtValue" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.liabOtherDebtValue && showFormValidation}" v-model.number="liabOtherDebtValue" required min="1" step="1">
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="liabOtherDebtExists" id="liabOtherDebtExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="liabOtherDebtExists" required>
+                                    <label class="coop-c-form-choice__label" for="liabOtherDebtExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <button id="buttonPage4" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <br />
+                        <br />
+                        <button id="back-Page4" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                    </template>
+
+                </form>
+
+                <form id="ihtCalcFormPage5" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 5" id="questions-page5">
+
+                        <h3>Giving things to people</h3>
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="giftExists">
+                                    Have you given away any money or things worth over £3,000 in the last 7 years?
+                                    <span class="coop-label__hint">Eg giving money to a child for a house deposit. Don’t include gifts to each other or to charity</span>
+                                </legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.giftExists"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="giftExists" id="giftExists-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="giftExists" required>
+                                    <label class="coop-c-form-choice__label" for="giftExists-1">Yes</label>
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="giftExists" id="giftExists-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="giftExists" required>
+                                    <label class="coop-c-form-choice__label" for="giftExists-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div v-if="giftExists == '1'">
+                            <section name="personA">
+                                <h3>Gifts from you <span class="coop-label__hint">Enter the total value of gifts for each tax year</span></h3>
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend" id="personAValue0"><label for="personAValue0">{{giftLabels[0]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue0"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue0"
+                                               id="personAValue0" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue0 && showFormValidation}" v-model.number="gifts.personA.year0" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue1">{{giftLabels[1]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue1"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue1"
+                                               id="personAValue1" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue1 && showFormValidation}" v-model.number="gifts.personA.year1" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue2">{{giftLabels[2]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue2"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue2"
+                                               id="personAValue2" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue2 && showFormValidation}" v-model.number="gifts.personA.year2" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue3">{{giftLabels[3]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue3"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue3"
+                                               id="personAValue3" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue3 && showFormValidation}" v-model.number="gifts.personA.year3" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue4">{{giftLabels[4]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue4"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue4"
+                                               id="personAValue4" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue4 && showFormValidation}" v-model.number="gifts.personA.year4" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue5">{{giftLabels[5]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue5"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue5"
+                                               id="personAValue5" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue5 && showFormValidation}" v-model.number="gifts.personA.year5" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue6">{{giftLabels[6]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue6"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue6"
+                                               id="personAValue6" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue6 && showFormValidation}" v-model.number="gifts.personA.year6" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personAValue7">{{giftLabels[7]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personAValue7"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personAValue7"
+                                               id="personAValue7" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue7 && showFormValidation}" v-model.number="gifts.personA.year7" min="1" step="1">
+                                        <span class="coop-label__hint">The 8th tax year is only included to capture whether there is any gift allowance to be rolled over to 7th tax year</span>
+                                    </fieldset>
+                                </div>
+                            </section>
+
+                            <section name="personB">
+                                <h3>Gifts from your partner <span class="coop-label__hint">Enter the total value of gifts for each tax year</span></h3>
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue0">{{giftLabels[0]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue0"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue0"
+                                               id="personBValue0" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue0 && showFormValidation}" v-model.number="gifts.personB.year0" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue1">{{giftLabels[1]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue1"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue1"
+                                               id="personBValue1" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue1 && showFormValidation}" v-model.number="gifts.personB.year1" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue2">{{giftLabels[2]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue2"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue2"
+                                               id="personBValue2" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue2 && showFormValidation}" v-model.number="gifts.personB.year2" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue3">{{giftLabels[3]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue3"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue3"
+                                               id="personBValue3" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personAValue3 && showFormValidation}" v-model.number="gifts.personB.year3" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue4">{{giftLabels[4]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue4"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue4"
+                                               id="personBValue4" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue4 && showFormValidation}" v-model.number="gifts.personB.year4" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue5">{{giftLabels[5]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue5"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue5"
+                                               id="personBValue5" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue5 && showFormValidation}" v-model.number="gifts.personB.year5" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue6">{{giftLabels[6]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue6"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue6"
+                                               id="personBValue6" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue6 && showFormValidation}" v-model.number="gifts.personB.year6" min="1" step="1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="coop-form__row">
+                                    <fieldset class="coop-c-form-choice">
+                                        <legend class="coop-c-form-choice__legend"><label for="personBValue7">{{giftLabels[7]}}</label></legend>
+                                        <error-message :show-errors="showFormValidation" :field="errors.personBValue7"></error-message>
+                                        <input inputmode="numeric" pattern="[0-9]*" type="number" name="personBValue7"
+                                               id="personBValue7" placeholder="£" class="coop-l-medium-4 coop-l-small-5" v-bind:class="{ 'coop-form__invalid': errors.personBValue7 && showFormValidation}" v-model.number="gifts.personB.year7" min="1" step="1">
+                                        <span class="coop-label__hint">The 8th tax year is only included to capture whether there is any gift allowance to be rolled over to 7th tax year</span>
+                                    </fieldset>
+                                </div>
+                            </section>
+                        </div>
+
+                        <button id="buttonPage5" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <br />
+                        <br />
+                        <button id="back-Page5" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+
+                    </template>
+                </form>
+
+                <form id="ihtCalcFormPage6" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 6" id="questions-page6">
+                        <h3>Your main home</h3>
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="leaveMainHomeToDecendant">
+                                    When you've both died, will you leave your main home to any children, grandchildren, or great-grandchildren?
+                                    <span class="coop-label__hint">This includes any adopted, foster or step-children</span>
+                                </legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.leaveMainHomeToDecendant"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="leaveMainHomeToDecendant" id="leaveMainHomeToDecendant-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeToDecendant" required>
+                                    <label class="coop-c-form-choice__label" for="leaveMainHomeToDecendant-1">Yes</label>
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="leaveMainHomeToDecendant" id="leaveMainHomeToDecendant-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeToDecendant" required>
+                                    <label class="coop-c-form-choice__label" for="leaveMainHomeToDecendant-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                        <button id="buttonPage6" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <br />
+                        <br />
+                        <button id="back-Page6" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                    </template>
+                </form>
+                <form id="ihtCalcFormPage7" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 7" id="questions-page7">
+                        <h3>Your main home</h3>
+
+                        <error-message-header :show-errors="Object.keys(errors).length > 0 && showFormValidation" :errors="errors"></error-message-header>
+
+                        <div class="coop-form__row">
+                            <fieldset>
+                                <legend class="coop-c-form-choice__legend" id="leaveMainHomeToDecendantPartner">
+                                    When you've both died, will you leave your main home to the married partner of any children, grandchildren, or great-grandchildren?
+                                    <span class="coop-label__hint">This includes their widow, widower or surviving civil partner</span>
+                                </legend>
+                                <error-message :show-errors="showFormValidation" :field="errors.leaveMainHomeToDecendantPartner"></error-message>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="leaveMainHomeToDecendantPartner" id="leaveMainHomeToDecendantPartner-1" value="1"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeToDecendantPartner" required>
+                                    <label class="coop-c-form-choice__label" for="leaveMainHomeToDecendantPartner-1">Yes</label>
+                                </div>
+                                <div class="coop-c-form-choice">
+                                    <input type="radio" name="leaveMainHomeToDecendantPartner" id="leaveMainHomeToDecendantPartner-2" value="2"
+                                           class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" v-model="leaveMainHomeToDecendantPartner" required>
+                                    <label class="coop-c-form-choice__label" for="leaveMainHomeToDecendantPartner-2">No</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                        <button id="buttonPage7" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Calculate</button>
+                        <br />
+                        <br />
+                        <button id="back-Page7" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
+                    </template>
+                </form>
+
+                <form id="ihtCalcFormPage8" v-on:submit.prevent v-on:submit="" novalidate>
+                    <template v-if="currentPage == 8" id="calculation">
+
+                        <div v-if="netEstateValue >= netEstateValueThreshold">
+                            <h2 id="estateOverThreshold">Your inheritance tax calculations are complex — but we can help</h2>
+                            <p>Because your estate is worth more than £2 million, your inheritance tax is quite complex and we can’t easily calculate what it will be.</p>
+                            <p>But we can talk you through it and maybe help you reduce your inheritance tax bill with our Revocable life interest trust will.</p>
+                            <br />
+                            <div id="refer">
+                                <a asp-page="/Refer" asp-route-name="@RouteData.Values["name"]" asp-route-product="wills" class="coop-btn coop-btn--primary" role="button">@Model.ReferButtonText</a>
+                            </div>
+                            <br />
+                            <p><a id="RevocableLife" href="/files/rlit-infographic.pdf" target="_blank" class="coop-t-link">See an example</a> of how our Revocable life interest trusts wills work.</p>
+                            <br />
+                            <button id="back-Page8-a" class="coop-btn" role="button" v-on:click="backPage(8)">Back</button>*@
+                        </div>
+
+                        <div v-else>
+                            <h2 v-if="ihtTotal == 0">We estimate you will have no inheritance tax bill</h2>
+                            <h2 v-if="ihtTotal > 0">We estimate your inheritance tax bill will be £{{ihtTotal.toLocaleString()}}</h2>
+                            <h2 v-if="giftsExcessPersonA > 0 || giftsExcessPersonB > 0">The people you have given money or assets to might need to pay additional inheritance tax.</h2>
+
+                            <details>
+                                <summary class="title coop-t-bold">Show the calculation</summary>
+                                <ul>
+                                    <li>assets worth: £{{assetsTotal.toLocaleString()}}</li>
+                                    <li>liabilities (the things you owe): £{{liabTotal.toLocaleString()}}</li>
+                                    <li>total value of your estate is: £{{netEstateValue.toLocaleString()}}</li>
+                                    <li>taxable Gifts over the last 7 years: £{{giftsTotal.toLocaleString()}}</li>
+                                    <li>Nil Rate Band Allowance (NRB) is: £{{nilRateBand.toLocaleString()}}</li>
+                                    <li>Residential Nil Rate Band Allowance (RNRB) is: £{{residualNilRateBandAllowance.toLocaleString()}}</li>
+                                </ul>
+                                <br />
+                                <li class="coop-u-list-bare">Net value of estate for inheritance tax: £{{netEstateValueForIHT.toLocaleString()}}</li>
+                                <li class="coop-u-list-bare">The rate of inheritance tax is 40%</li>
+                                <li class="coop-u-list-bare coop-t-bold">Inheritance tax total is: £{{ihtTotal.toLocaleString()}}</li>
+                                <br />
+                                <p>This calculation might not include all exemptions, elections, reliefs or tapering that might be available to you.</p>
+                                <p>This calculation assumes you and your partner are:</p>
+
+                                <ul>
+                                    <li>legally married or in a civil partnership</li>
+                                    <li>both considered domiciled for inheritance tax purposes in the United Kingdom</li>
+                                    <li>leaving your estates to each other after the first death</li>
+                                    <li>wanting your estate to pass to family or friends after you have both died</li>
+                                    <li>not planning to leave your estate to a new husband, wife or civil partner, or to charity</li>
+                                </ul>
+                                <br />
+                            </details>
+
+                            <div v-if="ihtTotal > 0">
+                                <br />
+                                <p>We might be able to help you reduce your inheritance tax bill with our Revocable life interest trust will.</p>
+                                <br />
+                                <div id="refer">
+                                    <a asp-page="/Refer" asp-route-name="@RouteData.Values["name"]" asp-route-product="wills" class="coop-btn coop-btn--primary" role="button">@Model.ReferButtonText</a>
+                                </div>
+                                <br />
+                                <p><a id="RevocableLife" href="/files/rlit-infographic.pdf" target="_blank">See an example</a> of how our Revocable life interest trusts wills work.</p>
+                            </div>
+                            <div v-if="ihtTotal == 0">
+                                <br />
+                                <h3>While you're here</h3>
+                                <p>You might want to:</p>
+                                <ul>
+                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will" class="coop-t-link">create an up-to-date will</a></li>
+                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/trust-wills" class="coop-t-link">set up a trust will</a> — if you want to make sure someone in particular receives your inheritance and prevent it being used to pay for care home fees</li>
+                                    <li><a href="https://www.co-oplegalservices.co.uk/making-a-will/lasting-powers-of-attorney" class="coop-t-link">make a lasting power of attorney</a> — to control what happens to you if you have an accident or an illness and cannot make your own decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </template>
+                </form>
+                <br />
+                <!--<button id="back-Page8-b" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>-->
+                <br />
+                <br />
+            </div>
+        </div>
+
+        </div>
+      </article>
+    </main>
     </div>
 
     <footer class="footer">
-        <div class="coop-l-wrap">
-            <div class="coop-l-row">
-                <div class="coop-l-columns coop-l-all-12">
+    <div class="coop-l-wrap">
+        <div class="coop-l-row">
+            <div class="coop-l-columns coop-l-all-12">
 
-                    <ul class="footer__list">
-                        <li class="footer__list-item">
-                            <a class="footer__link" href="">Privacy</a>
-                        </li>|
-                        <li class="footer__list-item">
-                            <a class="footer__link" href="" target="_blank">Other Information</a>
-                        </li>
-                    </ul>
+                <ul class="footer__list">
+                    <li class="footer__list-item">
+                        <a class="footer__link" href="">Privacy</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a class="footer__link" href="" target="_blank" rel="noreferrer">Other Information</a>
+                    </li>
+                </ul>
 
-                    <p class="footer-text">Copyright © Co-operative Legal Services Limited. All rights reserved. Co-op Legal Services is authorised and regulated by the Solicitors Regulation Authority under registration number 567391.</p>
-                </div>
+                <p class="footer-text">Copyright © Co-operative Legal Services Limited. All rights reserved. Co-op Legal Services is authorised and regulated by the Solicitors Regulation Authority under registration number 567391.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="assets/jquery.js"></script>
-    <script src="assets/site.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="assets/ihtCalculator.js"></script>
-
-
+<script src="assets/jquery.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/vue.js"></script>
+<script src="assets/ihtCalculator.js"></script>
 
 </body></html>
