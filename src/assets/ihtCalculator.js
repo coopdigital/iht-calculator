@@ -4,7 +4,7 @@
         field: String,
         showErrors: Boolean
     },
-    template: '<p v-if="showErrors" class="coop-c-form-error__text">{{field}}</p>'
+    template: '<p v-if="showErrors" class="coop-form__error">{{field}}</p>'
 });
 
 Vue.component('ErrorMessageHeader', {
@@ -17,7 +17,7 @@ Vue.component('ErrorMessageHeader', {
                     <h3 class="error-message-heading">There\'s a problem</h3>\
                     <p>Check the form. You must:</p>\
                     <ul>\
-                        <li v-for="(value, name) in errors"><a class="coop-c-form-error__text" v-bind:href="\'#\' + name">{{ value }}</a></li>\
+                        <li v-for="(value, name) in errors"><a class="coop-c-message__link" v-bind:href="\'#\' + name">{{ value }}</a></li>\
                     </ul>\
                 </div>'
 });
@@ -192,13 +192,17 @@ var app = new Vue({
                 return;
             }
             this.showFormValidation = false;
+            var goToResultsPage = false;
 
             if (this.currentPage == 4) {
                 this.assetsTotal = this.calculateAssets(this.assetsHomeValue, this.assetsHomeOtherValue, this.assetsInvestmentValue, this.assetsLifeInsuranceValue, this.assetsPossessionValue, this.assetsForeignValue, this.assetFurtherInheritanceValue, this.assetsOtherValue);
                 this.liabTotal = this.calculateLiabilities(this.liabMortageValue, this.liabMortgageOtherValue, this.liabOverdraftValue, this.liabCreditCardValue, this.liabLoanValue, this.liabOtherDebtValue);
-                this.netEstateValue = this.calculateNetEstate(this.assetsTotal, this.liabTotal);                
+                this.netEstateValue = this.calculateNetEstate(this.assetsTotal, this.liabTotal);    
+                if (this.netEstateValue > this.netEstateValueThreshold) {
+                    goToResultsPage = true;
+                }
             } 
-            if (this.currentPage == 7) {
+            if (this.currentPage == 7 || (this.currentPage == 6 && this.leaveMainHomeToDecendant == '1')) {
                 // Calculation
                 this.assetsTotal = this.calculateAssets(this.assetsHomeValue, this.assetsHomeOtherValue, this.assetsInvestmentValue, this.assetsLifeInsuranceValue, this.assetsPossessionValue, this.assetsForeignValue, this.assetFurtherInheritanceValue, this.assetsOtherValue);
                 this.liabTotal = this.calculateLiabilities(this.liabMortageValue, this.liabMortgageOtherValue, this.liabOverdraftValue, this.liabCreditCardValue, this.liabLoanValue, this.liabOtherDebtValue);
@@ -214,15 +218,13 @@ var app = new Vue({
                 this.residualNilRateBandAllowance = this.calculateRNRB();
                 this.netEstateValueForIHT = this.calculateNetEstateValueForIHT();
                 this.ihtTotal = this.calculateIHT();
+
+                goToResultsPage = true;
             }
 
             // alternate nav pattern for page 4
-            if (this.currentPage == 4) {
-                if (this.netEstateValue > this.netEstateValueThreshold) {
-                    this.currentPage = 8;
-                } else {
-                    this.currentPage = this.currentPage + 1;
-                }
+            if (goToResultsPage) {
+                this.currentPage = 8;
             } else {
                 this.currentPage = this.currentPage + 1;
             }
@@ -411,6 +413,10 @@ var app = new Vue({
                         top: items[0].offsetTop - 10,
                         behavior: 'smooth'
                     });
+                    //scroll parent if in iframe
+                    if (window.self !== window.top) {
+                        window.parent.postMessage('Scroll', '*');
+                    }
                 }
                 return;
             };
@@ -421,6 +427,10 @@ var app = new Vue({
                 top: 10,
                 behavior: 'smooth'
             });
+            //scroll parent if in iframe
+            if (window.self !== window.top) {
+                window.parent.postMessage('Scroll', '*');
+            }
         },
     },
     updated: function () {
