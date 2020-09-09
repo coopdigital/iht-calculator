@@ -95,7 +95,6 @@
                             </fieldset>
                         </div>
 
-
                         <button id="buttonPage1" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
                         <br />
                     </template>
@@ -113,7 +112,7 @@
                                 <li>wanting your estate to pass to family or friends after you have both died</li>
                                 <li>not planning to leave your estate to a charity or to a new husband, wife or registered civil partner after the first death</li>
                             </ul>
-                            <p>If you have an estate worth more than £2 million, things are a bit more complex. <a href="#">Refer your client today</a> to get our advice for reducing your inheritance tax bill.</p>
+                            <p>If you have an estate worth more than £2 million, things are a bit more complex. <a href="https://www.co-oplegalservices.co.uk/making-a-will/request-a-callback/" target="_parent" class="coop-t-link" role="button">Refer your client today</a> to get our advice for reducing your inheritance tax bill.</p>
                             <p>This is to be used as a guide only – it doesn’t constitute legal advice.</p>
 
                             <button id="buttonPage2" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
@@ -299,7 +298,6 @@
                 </form>
 
                 <form id="ihtCalcFormPage4" v-on:submit.prevent v-on:submit="" novalidate>
-
                     <template v-if="currentPage == 4" id="questions-page4">
 
                         <h3>You and your partner’s debts</h3>
@@ -510,6 +508,7 @@
                                     </fieldset>
                                 </div>
 
+
                                 <div class="coop-form__row">
                                     <fieldset class="coop-c-form-choice">
                                         <legend class="coop-c-form-choice__legend"><label for="personAValue3">{{giftLabels[3]}}</label></legend>
@@ -669,7 +668,7 @@
                         </div>
 
 
-                        <button id="buttonPage6" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Next</button>
+                        <button id="buttonPage6" class="coop-btn coop-btn--primary" type="button" v-on:click="submitPage()">Calculate</button>
                         <br />
                         <br />
                         <button id="back-Page6" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>
@@ -717,13 +716,13 @@
                             <p>Because your estate is worth more than £2 million, your inheritance tax is quite complex and we can’t easily calculate what it will be.</p>
                             <p>But we can talk you through it and maybe help you reduce your inheritance tax bill with our Revocable life interest trust will.</p>
                             <br />
-                            <div id="refer">
-                                <a asp-page="/Refer" asp-route-name="@RouteData.Values["name"]" asp-route-product="wills" class="coop-btn coop-btn--primary" role="button">@Model.ReferButtonText</a>
-                            </div>
+                            <button id="buttonPage8" class="coop-btn coop-btn--primary" type="button" v-on:click="">Call us</button>
+                            <br />
+                            <button id="buttonPage8" class="coop-btn coop-btn--primary" type="button" v-on:click="">Request a callback</button>
                             <br />
                             <p><a id="RevocableLife" href="/files/rlit-infographic.pdf" target="_blank" class="coop-t-link">See an example</a> of how our Revocable life interest trusts wills work.</p>
                             <br />
-                            <button id="back-Page8-a" class="coop-btn" role="button" v-on:click="backPage(8)">Back</button>*@
+                            <button id="back-Page8-a" class="coop-btn" role="button" v-on:click="backPage(8)">Back</button>
                         </div>
 
                         <div v-else>
@@ -763,9 +762,9 @@
                                 <br />
                                 <p>We might be able to help you reduce your inheritance tax bill with our Revocable life interest trust will.</p>
                                 <br />
-                                <div id="refer">
-                                    <a asp-page="/Refer" asp-route-name="@RouteData.Values["name"]" asp-route-product="wills" class="coop-btn coop-btn--primary" role="button">@Model.ReferButtonText</a>
-                                </div>
+                                <button id="buttonPage8" class="coop-btn coop-btn--primary" type="button" v-on:click="">Call us</button>
+                                <br />
+                                <button id="buttonPage8" class="coop-btn coop-btn--primary" type="button" v-on:click="">Request a callback</button>
                                 <br />
                                 <p><a id="RevocableLife" href="/files/rlit-infographic.pdf" target="_blank">See an example</a> of how our Revocable life interest trusts wills work.</p>
                             </div>
@@ -782,9 +781,7 @@
                         </div>
                     </template>
                 </form>
-                <br />
-                <!--<button id="back-Page8-b" class="coop-btn" role="button" type="button" v-on:click="backPage()">Back</button>-->
-                <br />
+
                 <br />
             </div>
         </div>
